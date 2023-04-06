@@ -273,14 +273,14 @@ fn expand_derive_decode_struct(
         let mut generics = generics.clone();
         generics.params.insert(0, parse_quote!('r));
 
-        let predicates = &mut generics.make_where_clause().predicates;
+        // let predicates = &mut generics.make_where_clause().predicates;
 
-        for field in fields {
-            let ty = &field.ty;
+        // for field in fields {
+        //     let ty = &field.ty;
 
-            predicates.push(parse_quote!(#ty: ::sqlx::decode::Decode<'r, ::sqlx::Postgres>));
-            predicates.push(parse_quote!(#ty: ::sqlx::types::Type<::sqlx::Postgres>));
-        }
+        //     predicates.push(parse_quote!(#ty: ::sqlx::decode::Decode<'r, ::sqlx::Postgres>));
+        //     predicates.push(parse_quote!(#ty: ::sqlx::types::Type<::sqlx::Postgres>));
+        // }
 
         let (impl_generics, _, where_clause) = generics.split_for_impl();
 
